@@ -1,6 +1,6 @@
-# GitHub page for the Simple Permutation-based Intermodal CorrEspondence (SPICE) test
+# R code for the Simple Permutation-based Intermodal CorrEspondence (SPICE) test
 
-## What's included:
+## What's included on this GitHub page:
 
 ### (1) maptest_script.R
 - includes the basic script for implementing a test of intermodal correspondence
