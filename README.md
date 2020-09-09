@@ -12,4 +12,5 @@
     use_cores: defaults to 1 (specify the number of cores to use for parallelizing parts of the code
     
 ### (2) bird_script_batch.R
-- Code for conducting simulations from paper. See description and results of these simulations in sections 2.3, 3.1, and in Figure 4.
+- Code for conducting simulations from paper. We first take a colorful image of a bird and extract the intensity values from the red and green color channels. Then we add/multiply random noise at each location in each color channel to obtain a population of bi-modal image data.
+- See description and results of these simulations in sections 2.3, 3.1, and in Figure 4.
