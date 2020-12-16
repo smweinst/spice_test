@@ -56,7 +56,7 @@ for (s in 1:nsim){
     print(paste("simulation ", s, "of ", nsim),quote = F)
   }
   sim.dat.s <- sim.fun(n=par.vals$n[jobid],M = M,sd.a.i=sqrt(par.vals$var.a.i[jobid]),sd.e.ij = sqrt(par.vals$var.e.ij[jobid]))
-  pval.s[s] <- map.test(K=K,X.mat = sim.dat.s$X.mat,Y.mat = sim.dat.s$Y.mat, use_cores = use_cores)$pvalue
+  pval.s[s] <- map.test(K=K,X.mat = sim.dat.s$X.mat,Y.mat = sim.dat.s$Y.mat, use_cores = use_cores, rtoz = TRUE)$pvalue # rtoz = TRUE for Fisher transformation of the Pearson correlation
 }
 p.reject = length(which(pval.s<0.05))/nsim # proportion of simulations in which H_0 was rejected
 

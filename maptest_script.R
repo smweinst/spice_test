@@ -1,12 +1,23 @@
 # MAP TEST SCRIPT (aka SPICE test)
 
 # pearson correlation version of psi (could also use covariance or something else instead)
-psi <- function(X.mat, Y.mat,n=n){
-  psi.i <- mean(sapply(1:n, FUN = function(i){cor(X.mat[i,],Y.mat[i,])}))
+psi <- function(X.mat, Y.mat,n=n, rtoz = TRUE){
+  if (rtoz==F){
+    psi.i <- mean(sapply(1:n, FUN = function(i){cor(X.mat[i,],Y.mat[i,])}))
+  }else{ # if fisher r-to-z transformation should be used
+    psi.i <- mean(sapply(1:n, FUN = function(i){
+      
+      r = cor(X.mat[i,],Y.mat[i,]) # pearson correlation (default in cor() function)
+      z = 0.5*(log(1+r) - log(1-r)) # fisher r to z transformation
+      
+      return(z) # psi.i will be the average over the r-to-z transformed statistics
+      
+      }))
+  }
   return(psi.i)
 }
 
-map.test <- function(K, X.mat, Y.mat, use_cores=1){
+map.test <- function(K, X.mat, Y.mat, use_cores=1, rtoz = TRUE){
   
   n = nrow(X.mat)
   
@@ -15,7 +26,7 @@ map.test <- function(K, X.mat, Y.mat, use_cores=1){
   A.k <- parallel::mclapply(1:K, FUN = function(k){
     rows <- sample(nrow(Y.mat),replace = F)
     Y.mat <- Y.mat[rows,]
-    A.k.temp <- psi(X.mat,Y.mat,n=n)
+    A.k.temp <- psi(X.mat,Y.mat,n=n,rtoz = rtoz) # r to z argument added 12/04/2020. default is FALSE
     return(A.k.temp)
   },mc.cores = use_cores)
   A.k = unlist(A.k)
