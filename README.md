@@ -13,6 +13,6 @@
     - `Y.mat`: same as `X.mat` but for the "Y" modality. Dimension of this matrix should be the same as for `X.mat`
     - `use_cores`: optionally specify the number of cores to use for parallelizing parts of the code. The default is 1.
     
-### (2) `bird_script_batch.R`
-- Code for conducting simulations from paper. We first take a colorful image of a bird (array stored in `M.RData`) and extract the intensity values from the red and green color channels. Then we add/multiply random noise at each location in each color channel to obtain a population of bi-modal image data.
-- See description and results of these simulations in the paper (sections 2.3 and 3.1 and Figure 4).
+### (2) `brain_simulations_batch.R`
+- Code for conducting simulations from paper. We use average cortical thickness, sulcal depth, and n-back from the Philadelphia Neurodevelopmental Cohort (PNC) as population-level image patterns. Then we add/multiply noise/signal to these images to generate multi-modal image data.
+- See description and results of these simulations in the paper (section 2.2.2 and Figures 3 and 4).

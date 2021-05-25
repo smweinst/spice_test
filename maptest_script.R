@@ -1,7 +1,7 @@
 # MAP TEST SCRIPT (aka SPICE test)
 
-# pearson correlation version of psi (could also use covariance or something else instead)
-psi <- function(X.mat, Y.mat,n=n, rtoz = TRUE){
+# pearson correlation version of psi
+psi <- function(X.mat, Y.mat,n=n, rtoz = FALSE){
   if (rtoz==F){
     psi.i <- mean(sapply(1:n, FUN = function(i){cor(X.mat[i,],Y.mat[i,])}))
   }else{ # if fisher r-to-z transformation should be used
@@ -17,16 +17,16 @@ psi <- function(X.mat, Y.mat,n=n, rtoz = TRUE){
   return(psi.i)
 }
 
-map.test <- function(K, X.mat, Y.mat, use_cores=1, rtoz = TRUE){
+map.test <- function(K, X.mat, Y.mat, use_cores=1, rtoz = FALSE){
   
   n = nrow(X.mat)
   
-  A.0 <- psi(X.mat, Y.mat,n=n) # correlation between X and Y within-subject
+  A.0 <- psi(X.mat, Y.mat,n=n, rtoz = rtoz) # average within-subject correlation between X and Y
   
   A.k <- parallel::mclapply(1:K, FUN = function(k){
     rows <- sample(nrow(Y.mat),replace = F)
     Y.mat <- Y.mat[rows,]
-    A.k.temp <- psi(X.mat,Y.mat,n=n,rtoz = rtoz) # r to z argument added 12/04/2020. default is FALSE
+    A.k.temp <- psi(X.mat,Y.mat,n=n,rtoz = rtoz)
     return(A.k.temp)
   },mc.cores = use_cores)
   A.k = unlist(A.k)
