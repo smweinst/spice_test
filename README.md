@@ -1,6 +1,6 @@
 # R code for the Simple Permutation-based Intermodal CorrEspondence (SPICE) test
 
-- [Preprint on bioRxiv](https://www.biorxiv.org/content/10.1101/2020.09.10.285049v1)
+- [Preprint on bioRxiv](https://www.biorxiv.org/content/10.1101/2020.09.10.285049v2)
 
 ### What's included in this repository:
 
