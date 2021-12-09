@@ -1,6 +1,7 @@
 # R code for the Simple Permutation-based Intermodal CorrEspondence (SPICE) test
 
 - [Preprint on bioRxiv](https://www.biorxiv.org/content/10.1101/2020.09.10.285049v2)
+- [Published in Human Brain Mapping](https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.25577)
 
 ### What's included in this repository:
 
