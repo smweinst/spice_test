@@ -18,4 +18,11 @@
 - Code for conducting simulations from paper. We use average cortical thickness, sulcal depth, and n-back from the Philadelphia Neurodevelopmental Cohort (PNC) as population-level image patterns. Then we add/multiply noise/signal to these images to generate multi-modal image data.
 - See description and results of these simulations in the paper (section 2.2.2 and Figures 3 and 4).
 
-### python code:
+### Python code:
+#### maptest_script.py
+- This script provides the Python implementation of a test for intermodal correspondence. 
+- function can be used as `map_test()`.
+- Input arguments:
+    - `K`: Number of permutations for significance testing.
+    - `X_mat`: Matrix where each row contains a vector of intensities across all image locations in the "X" modality for each subject (rows = subjects; columns = image locations).
+    - `Y_mat`: Same as X_mat but for the "Y" modality. Dimensions of `Y_mat` should match `X_mat`.

@@ -19,7 +19,7 @@ def permute_and_psi(X_mat, Y_mat, n, rtoz):
     Y_perm = Y_mat[rows, :]
     return psi(X_mat, Y_perm, rtoz=rtoz)
 
-def map_test(K, X_mat, Y_mat, use_cores=1, rtoz=False):
+def map_test(K, X_mat, Y_mat, rtoz=False):
     n = X_mat.shape[0]
     
     # Calculate A.0 (original correlation)
